@@ -1,17 +1,37 @@
-<h1>Edit Car</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head", { title: "Edit Car" }) %>
 
-<form action="/cars/<%= car._id %>?_method=PUT" method="POST">
-  <input name="make" value="<%= car.make %>" required />
-  <input name="model" value="<%= car.model %>" required />
-  <input name="year" type="number" value="<%= car.year %>" required />
-  <input name="color" value="<%= car.color %>" />
+  <body>
+    <%- include("../partials/nav") %>
 
-  <label>
-    Electric?
-    <input type="checkbox" name="isElectric" <%= car.isElectric ? "checked" : "" %> />
-  </label>
+    <main class="container">
+      <!-- Page heading -->
+      <h1>Edit Car</h1>
 
-  <button type="submit">Update</button>
-</form>
+      <!-- Form to update car -->
+      <form action="/cars/<%= car._id %>?_method=PUT" method="POST">
+        <label>Make</label>
+        <input name="make" value="<%= car.make %>" required />
 
-<a href="/cars/<%= car._id %>">Cancel</a>
+        <label>Model</label>
+        <input name="model" value="<%= car.model %>" required />
+
+        <label>Year</label>
+        <input type="number" name="year" value="<%= car.year %>" required />
+
+        <label>Color</label>
+        <input name="color" value="<%= car.color %>" />
+
+        <label>
+          Electric?
+          <input type="checkbox" name="isElectric" <%= car.isElectric ? "checked" : "" %> />
+        </label>
+
+        <!-- Submit button -->
+        <button class="btn btn-primary">Save</button>
+      </form>
+    </main>
+  </body>
+</html>
+

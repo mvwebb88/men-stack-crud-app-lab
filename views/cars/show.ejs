@@ -1,12 +1,29 @@
-<h1><%= car.year %> <%= car.make %> <%= car.model %></h1>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head", { title: "Car Details" }) %>
 
-<p>Color: <%= car.color || "N/A" %></p>
-<p>Electric: <%= car.isElectric ? "Yes" : "No" %></p>
+  <body>
+    <%- include("../partials/nav") %>
 
-<a href="/cars/<%= car._id %>/edit">Edit</a>
+    <main class="container">
+      <!-- Car heading -->
+      <h1><%= car.year %> <%= car.make %> <%= car.model %></h1>
 
-<form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
-  <button type="submit">Delete</button>
-</form>
+      <!-- Car details -->
+      <p>Color: <%= car.color || "N/A" %></p>
+      <p>Electric: <%= car.isElectric ? "Yes" : "No" %></p>
 
-<a href="/cars">Back</a>
+      <!-- Edit link -->
+      <a class="btn" href="/cars/<%= car._id %>/edit">Edit</a>
+
+      <!-- Delete form -->
+      <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">Delete</button>
+      </form>
+
+      <!-- Back link -->
+      <a href="/cars">Back</a>
+    </main>
+  </body>
+</html>
+

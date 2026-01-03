@@ -1,17 +1,37 @@
-<h1>Add a New Car</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head", { title: "Add Car" }) %>
 
-<form action="/cars" method="POST">
-  <input name="make" placeholder="Make" required />
-  <input name="model" placeholder="Model" required />
-  <input name="year" type="number" placeholder="Year" required />
-  <input name="color" placeholder="Color" />
+  <body>
+    <%- include("../partials/nav") %>
 
-  <label>
-    Electric?
-    <input type="checkbox" name="isElectric" />
-  </label>
+    <main class="container">
+      <!-- Page heading -->
+      <h1>Add a New Car</h1>
 
-  <button type="submit">Create</button>
-</form>
+      <!-- Form to create car -->
+      <form action="/cars" method="POST">
+        <label>Make</label>
+        <input name="make" required />
 
-<a href="/cars">Back</a>
+        <label>Model</label>
+        <input name="model" required />
+
+        <label>Year</label>
+        <input type="number" name="year" required />
+
+        <label>Color</label>
+        <input name="color" />
+
+        <label>
+          Electric?
+          <input type="checkbox" name="isElectric" />
+        </label>
+
+        <!-- Submit button -->
+        <button class="btn btn-primary">Create</button>
+      </form>
+    </main>
+  </body>
+</html>
+

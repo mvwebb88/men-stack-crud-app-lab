@@ -1,0 +1,55 @@
+/* Reset page spacing */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0b1020;
+  color: white;
+}
+
+/* Center page content */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Navigation bar styling */
+.nav {
+  background-color: #111a33;
+  padding: 12px;
+}
+
+/* Navigation links */
+.nav a {
+  color: white;
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+/* Button styling */
+.btn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+}
+
+/* Primary button style */
+.btn-primary {
+  background-color: #4f7cff;
+}
+
+/* Danger button style */
+.btn-danger {
+  background-color: #ff4d4d;
+}
+
+/* Card styling */
+.card {
+  border: 1px solid #444;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+

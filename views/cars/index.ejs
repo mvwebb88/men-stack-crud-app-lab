@@ -1,120 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cars | Index</title>
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 40px;
-        line-height: 1.4;
-      }
-      header {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 20px;
-      }
-      a {
-        color: #1a5bd6;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .btn {
-        display: inline-block;
-        padding: 10px 14px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: #f7f7f7;
-        font-weight: 600;
-      }
-      .btn:hover {
-        background: #efefef;
-      }
-      .card {
-        border: 1px solid #e6e6e6;
-        border-radius: 12px;
-        padding: 14px;
-        margin: 12px 0;
-      }
-      .car-title {
-        font-size: 18px;
-        font-weight: 700;
-        margin: 0 0 6px;
-      }
-      .meta {
-        margin: 0;
-        color: #555;
-      }
-      .actions {
-        margin-top: 10px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-      .danger {
-        border: 1px solid #f1b2b2;
-        background: #fff5f5;
-      }
-      .danger:hover {
-        background: #ffecec;
-      }
-      .empty {
-        padding: 16px;
-        border: 1px dashed #ccc;
-        border-radius: 12px;
-        color: #555;
-        margin-top: 20px;
-      }
-      form {
-        display: inline;
-      }
-    </style>
-  </head>
+  <%- include("../partials/head", { title: "All Cars" }) %>
 
   <body>
-    <header>
+    <%- include("../partials/nav") %>
+
+    <main class="container">
+      <!-- Page heading -->
       <h1>All Cars</h1>
-      <a class="btn" href="/cars/new">+ Add New Car</a>
-    </header>
 
-    <% if (!cars || cars.length === 0) { %>
-      <div class="empty">
-        <p><strong>No cars yet.</strong></p>
-        <p>
-          Click <a href="/cars/new">Add New Car</a> to create your first entry.
-        </p>
-      </div>
-    <% } else { %>
-      <% cars.forEach((car) => { %>
-        <div class="card">
-          <p class="car-title">
-            <a href="/cars/<%= car._id %>">
-              <%= car.year %> <%= car.make %> <%= car.model %>
-            </a>
-          </p>
+      <!-- Show message if no cars exist -->
+      <% if (cars.length === 0) { %>
+        <p>No cars yet. <a href="/cars/new">Add one</a>.</p>
+      <% } else { %>
+        <!-- Loop through cars -->
+        <% cars.forEach(car => { %>
+          <div class="card">
+            <!-- Link to show page -->
+            <h3>
+              <a href="/cars/<%= car._id %>">
+                <%= car.year %> <%= car.make %> <%= car.model %>
+              </a>
+            </h3>
 
-          <p class="meta">
-            Color: <%= car.color && car.color.trim() ? car.color : "N/A" %>
-            • Electric: <%= car.isElectric ? "Yes" : "No" %>
-          </p>
+            <!-- Car details -->
+            <p>Color: <%= car.color || "N/A" %></p>
+            <p>Electric: <%= car.isElectric ? "Yes" : "No" %></p>
 
-          <div class="actions">
-            <a class="btn" href="/cars/<%= car._id %>">View</a>
+            <!-- Edit link -->
             <a class="btn" href="/cars/<%= car._id %>/edit">Edit</a>
 
+            <!-- Delete form -->
             <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
-              <button class="btn danger" type="submit">Delete</button>
+              <button class="btn btn-danger">Delete</button>
             </form>
           </div>
-        </div>
-      <% }) %>
-    <% } %>
+        <% }) %>
+      <% } %>
+    </main>
   </body>
 </html>
+
 
