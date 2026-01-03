@@ -1,0 +1,17 @@
+<h1>Add a New Car</h1>
+
+<form action="/cars" method="POST">
+  <input name="make" placeholder="Make" required />
+  <input name="model" placeholder="Model" required />
+  <input name="year" type="number" placeholder="Year" required />
+  <input name="color" placeholder="Color" />
+
+  <label>
+    Electric?
+    <input type="checkbox" name="isElectric" />
+  </label>
+
+  <button type="submit">Create</button>
+</form>
+
+<a href="/cars">Back</a>

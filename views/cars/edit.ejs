@@ -1,0 +1,17 @@
+<h1>Edit Car</h1>
+
+<form action="/cars/<%= car._id %>?_method=PUT" method="POST">
+  <input name="make" value="<%= car.make %>" required />
+  <input name="model" value="<%= car.model %>" required />
+  <input name="year" type="number" value="<%= car.year %>" required />
+  <input name="color" value="<%= car.color %>" />
+
+  <label>
+    Electric?
+    <input type="checkbox" name="isElectric" <%= car.isElectric ? "checked" : "" %> />
+  </label>
+
+  <button type="submit">Update</button>
+</form>
+
+<a href="/cars/<%= car._id %>">Cancel</a>
