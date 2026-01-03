@@ -1,55 +1,242 @@
-/* Reset page spacing */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0b1020;
-  color: white;
+/* Theme variables */
+:root {
+  --bg: #0b1020;
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(255, 255, 255, 0.08);
+  --text: #e9eefc;
+  --muted: rgba(233, 238, 252, 0.75);
+  --border: rgba(255, 255, 255, 0.14);
+  --link: #9bb8ff;
+  --primary: rgba(120, 166, 255, 0.25);
+  --primary-border: rgba(120, 166, 255, 0.45);
+  --danger: rgba(255, 92, 122, 0.16);
+  --danger-border: rgba(255, 92, 122, 0.45);
+  --radius: 14px;
+  --shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  --nav-height: 72px;
 }
 
-/* Center page content */
+/* Use border-box sizing everywhere */
+* {
+  box-sizing: border-box;
+}
+
+/* Base page setup */
+html,
+body {
+  height: 100%;
+}
+
+/* Page background and font */
+body {
+  margin: 0;
+  font-family: Arial, system-ui, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: radial-gradient(1100px 520px at 30% 0%, #17214a 0%, var(--bg) 60%);
+}
+
+/* Default link styling */
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+/* Link hover effect */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Centered content container */
 .container {
-  width: 90%;
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  width: min(980px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* Push content below sticky navigation */
+main {
+  padding: calc(var(--nav-height) + 24px) 0 56px;
 }
 
 /* Navigation bar styling */
 .nav {
-  background-color: #111a33;
-  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.78);
+  backdrop-filter: blur(10px);
 }
 
-/* Navigation links */
-.nav a {
-  color: white;
-  margin-right: 12px;
-  text-decoration: none;
+/* Navigation layout */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* Button styling */
+/* App brand styling */
+.brand {
+  font-weight: 900;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Navigation links layout */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Main heading */
+h1 {
+  margin: 0 0 14px;
+  font-size: 34px;
+}
+
+/* Paragraph spacing */
+p {
+  margin: 10px 0;
+}
+
+/* Muted text style */
+.subtle {
+  color: var(--muted);
+}
+
+/* Base button styling */
 .btn {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background-color: #222;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-weight: 800;
   cursor: pointer;
 }
 
-/* Primary button style */
+/* Button hover effect */
+.btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Primary button styling */
 .btn-primary {
-  background-color: #4f7cff;
+  background: var(--primary);
+  border-color: var(--primary-border);
 }
 
-/* Danger button style */
+/* Primary button hover */
+.btn-primary:hover {
+  background: rgba(120, 166, 255, 0.32);
+}
+
+/* Danger button styling */
 .btn-danger {
-  background-color: #ff4d4d;
+  background: var(--danger);
+  border-color: var(--danger-border);
 }
 
-/* Card styling */
-.card {
-  border: 1px solid #444;
-  padding: 12px;
-  margin-bottom: 12px;
+/* Danger button hover */
+.btn-danger:hover {
+  background: rgba(255, 92, 122, 0.22);
 }
+
+/* Card container */
+.card {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin: 14px 0;
+}
+
+/* Card title */
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+/* Card paragraph text */
+.card p {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+/* Action buttons layout */
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Prevent forms from breaking layout */
+form {
+  display: inline;
+}
+
+/* Empty state styling */
+.empty {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--panel-strong);
+  padding: 16px;
+  color: var(--muted);
+}
+
+/* Form label styling */
+label {
+  display: block;
+  font-weight: 900;
+  margin: 12px 0 8px;
+}
+
+/* Text and number inputs */
+input[type="text"],
+input[type="number"] {
+  width: min(520px, 100%);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 48, 0.75);
+  color: var(--text);
+}
+
+/* Input placeholder text */
+input::placeholder {
+  color: rgba(233, 238, 252, 0.55);
+}
+
+/* Checkbox alignment */
+input[type="checkbox"] {
+  transform: translateY(1px);
+}
+
+/* Mobile adjustments */
+@media (max-width: 520px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .nav {
+    height: 64px;
+  }
+
+  :root {
+    --nav-height: 64px;
+  }
+}
+
 
